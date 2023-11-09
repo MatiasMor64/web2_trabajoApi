@@ -19,7 +19,7 @@
                 if(!empty($tarea)){
                     $this -> view ->response($tarea, 200);
                 } else {
-                    $this -> view ->response(['msg' => 'la tarea con la id= '.$params[':ID'].' no existe.'], 404);
+                    $this -> view ->response(['msg' => 'la tarea con la id '.$params[':ID'].' no existe.'], 404);
 
             }
         }
