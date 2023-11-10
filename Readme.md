@@ -10,7 +10,7 @@ Breve descripción de la temática: -En resumen, la pagina es una version pareci
 - GET: localhost/uni/laburoapi/api/tareas
 - GET: localhost/uni/laburoapi/api/tareas/ID (cualquier id de los productos)
 - DELETE: localhost/uni/laburoapi/api/tareas/ID (cualquier id de los productos)
-
+- POST: localhost/uni/laburoapi/api/tareas (deberia de tener un codigo disponible para agregar a la base de datos)
 ## ejemplo de codigo que se puede usar para los POST o PUT:
 - {
     - "Producto": "manta invisible",
