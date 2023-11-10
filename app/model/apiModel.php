@@ -31,5 +31,17 @@ public function get($ID) {
     return $producto;
 }
 
+//para borrar productos especificos segun la id que le hayamos dado
+function delete($id) {
+    $query = $this->db->prepare('DELETE FROM productos WHERE id = ?');
+    $query->execute([$id]);
+}
+
+function insertar_datos($Producto,$Imagen,$Precio,$Categoria,$Descripcion){
+    $query = $this->db->prepare("INSERT INTO productos ( Producto, Imagen, Precio, Categoria, Descripcion) VALUES (?, ?, ?, ?, ?)");
+        $query->execute([$Producto,$Imagen,$Precio,$Categoria,$Descripcion]);
+
+        return $this->db->lastInsertId();
+}
 }
 
