@@ -11,7 +11,7 @@ Breve descripción de la temática: -En resumen, la pagina es una version pareci
 - GET: /api/Productos/ID (cualquier id de los productos)
 - DELETE: /api/Productos/ID (cualquier id de los productos)
 - POST: /api/Productos (deberia de tener un codigo disponible para agregar a la base de datos)
-- ORDENAR:  /api/Productos/Orden/:ORDEN (asc (ascendente) o desc (descendente)
+- ORDENAR:  /api/Productos/Orden/:ORDEN (asc (ascendente) o desc (descendente) por precio)
 ## ejemplo de codigo que se puede usar para los POST o PUT:
 - {
     - "Producto": "manta invisible",
