@@ -12,14 +12,15 @@
 
         function get($params = []){
             if(empty($params)){
-                $tareas = $this->model->getAll();
-                $this -> view ->response($tareas, 200);
+                $productos = $this->model->getAll();
+                $this -> view ->response($productos, 200);
             } else {
-                $tarea = $this->model->get($params[':ID']);
-                if(!empty($tarea)){
-                    $this -> view ->response($tarea, 200);
+                $id = $params[':ID'];
+                $producto = $this->model->get($id);
+                if(!empty($producto)){
+                    $this -> view ->response($producto, 200);
                 } else {
-                    $this -> view ->response(['msg' => 'la tarea con la id '.$params[':ID'].' no existe.'], 404);
+                    $this -> view ->response('el producto de id '.$id.' no existe.', 404);
 
                 }
             }
@@ -46,6 +47,24 @@
             $this -> view -> response('El producto de id '.$id.' ha sido registrado correctamente!',201);
         }
 
+        function modify($params= []) {
+            $id = $params[':ID'];
+            $producto = $this->model->get($id);
+            if($producto){
+                $body = $this->datos_producto();
+                $Producto= $body->Producto;
+                $Imagen= $body->Imagen;
+                $Precio= $body->Precio;
+                $Categoria= $body->Categoria;
+                $Descripcion= $body->Descripcion;
+                $this->model->actualizar_datos($id, $Producto, $Imagen, $Precio, $Categoria, $Descripcion);
+            
+                $this -> view -> response('El producto de id '. $id .' fue modificado correctamente!', 200);
+            } else {
+                $this -> view -> response('El producto '. $id .' no existe', 404);
+            }
+        }
+        
         function ObtenerOrdenado($params=[]){
             $orden =$params[':ORDER'];
             switch ($params[':ORDER']) {

@@ -24,9 +24,9 @@ public function getAll() {
     return $productos;
 }
 
-public function get($ID) {
+public function get($id) {
     $query = $this->db->prepare("SELECT * FROM productos WHERE id = ?");
-    $query->execute([$ID]);
+    $query->execute([$id]);
     $producto = $query->fetch(PDO::FETCH_OBJ);
     return $producto;
 }
@@ -44,6 +44,11 @@ function insertar_datos($Producto,$Imagen,$Precio,$Categoria,$Descripcion){
         return $this->db->lastInsertId();
 }
 
+function actualizar_datos($id, $Producto, $Imagen, $Precio, $Categoria, $Descripcion){
+    $query = $this->db->prepare("UPDATE productos SET Producto = ?, Imagen = ?, Precio = ?, Categoria = ?, Descripcion = ? WHERE id = ?");
+    $query->execute([$Producto,$Imagen,$Precio,$Categoria,$Descripcion,$id]);
+    
+}
 function ObtenerProductosOrdenados($orden) {
 
     $query = $this->db->prepare('SELECT * FROM productos ORDER BY Precio ' . $orden);
