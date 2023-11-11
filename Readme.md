@@ -9,7 +9,7 @@ Breve descripción de la temática: -En resumen, la pagina es una version pareci
 ## ENDPOINTS usados:
 - GET: /api/Productos
 - GET: /api/Productos/ID (cualquier id de los productos)
-- GET: /api/Productos/ID/subrecurso (cualquier id y cualquiera de los datos de un producto) EJ: si se usase la secuencia id /api/Productos/26/Categoria, el programa mostraria la categoria Harry Potter
+- GET: /api/Productos/ID/subrecurso (cualquier id y cualquiera de los datos de un producto) EJ: si se usase la secuencia id /api/Productos/26/Categoria, el programa mostraria la categoria Demon Slayer
 - DELETE: /api/Productos/ID (cualquier id de los productos)
 - POST: /api/Productos (deberia de tener un codigo disponible para agregar a la base de datos)
 - ORDENAR:  /api/Productos/Orden/:ORDEN (asc (ascendente) o desc (descendente) por precio)
