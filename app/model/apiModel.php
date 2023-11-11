@@ -43,5 +43,15 @@ function insertar_datos($Producto,$Imagen,$Precio,$Categoria,$Descripcion){
 
         return $this->db->lastInsertId();
 }
+
+function ObtenerProductosOrdenados($orden) {
+
+    $query = $this->db->prepare('SELECT * FROM productos ORDER BY Precio ' . $orden);
+    $query->execute();
+    
+    $productos = $query->fetchAll(PDO::FETCH_OBJ);
+    return $productos;
+}
+
 }
 

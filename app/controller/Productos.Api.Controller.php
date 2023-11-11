@@ -45,6 +45,25 @@
             $id = $this->model->insertar_datos($Producto,$Imagen,$Precio,$Categoria,$Descripcion);
             $this -> view -> response('El producto de id '.$id.' ha sido registrado correctamente!',201);
         }
+
+        function ObtenerOrdenado($params=[]){
+            $orden =$params[':ORDER'];
+            switch ($params[':ORDER']) {
+              case 'asc':
+                $productos=$this->model->ObtenerProductosOrdenados($orden);
+                $this->view->response($productos, 200);
+                  break;
+              case 'desc':
+                $productos=$this->model->ObtenerProductosOrdenados($orden);
+                $this->view->response($productos, 200);
+             
+                  break;
+              default:
+                  $this->view->response('Parametro no reconocido', 400);
+                  break;
+          }
+      
+          }
     }
 
 
