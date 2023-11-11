@@ -7,10 +7,11 @@
 Breve descripción de la temática: -En resumen, la pagina es una version parecida a MercadoLibre pero que se basa en vender productos de fantasia de distintas franquicias, donde los usuarios pueden entrar, registrarse y también añadir o quitar productos si tienen los permisos correspondientes
 
 ## ENDPOINTS usados:
-- GET: localhost/uni/laburoapi/api/tareas
-- GET: localhost/uni/laburoapi/api/tareas/ID (cualquier id de los productos)
-- DELETE: localhost/uni/laburoapi/api/tareas/ID (cualquier id de los productos)
-- POST: localhost/uni/laburoapi/api/tareas (deberia de tener un codigo disponible para agregar a la base de datos)
+- GET: /api/Productos
+- GET: /api/Productos/ID (cualquier id de los productos)
+- DELETE: /api/Productos/ID (cualquier id de los productos)
+- POST: /api/Productos (deberia de tener un codigo disponible para agregar a la base de datos)
+- ORDENAR:  /api/Productos/Orden/:ORDEN (asc (ascendente) o desc (descendente)
 ## ejemplo de codigo que se puede usar para los POST o PUT:
 - {
     - "Producto": "manta invisible",
