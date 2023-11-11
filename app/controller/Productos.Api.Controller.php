@@ -18,7 +18,31 @@
                 $id = $params[':ID'];
                 $producto = $this->model->get($id);
                 if(!empty($producto)){
-                    $this -> view ->response($producto, 200);
+                    if(isset($params[':subrecurso'])) {
+                        switch ($params[':subrecurso']) {
+                            case 'Producto':
+                                $this->view->response($producto->Producto, 200);
+                            break;
+                            case 'Imagen':
+                                $this->view->response($producto->Imagen, 200);
+                            break;
+                            case 'Precio':
+                                $this->view->response($producto->Precio, 200);
+                            break;
+                            case 'Categoria':
+                                $this->view->response($producto->Categoria, 200);
+                            break;
+                            case 'Descripcion':
+                                $this->view->response($producto->Descripcion, 200);
+                            break;
+                            default:
+                                $this->view->response(
+                                'El producto no contiene '.$params[':subrecurso'].'.', 404);
+                            break;
+                        }
+                    } else {
+                        $this -> view ->response($producto, 200);
+                    }
                 } else {
                     $this -> view ->response('el producto de id '.$id.' no existe.', 404);
 
