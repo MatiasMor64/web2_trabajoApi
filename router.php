@@ -6,11 +6,14 @@
     //                 endpoint                  verbo      controller                metodo
     $router->addRoute('Productos',                 'GET',    'ProductosApiController', 'get'            );
     $router->addRoute('Productos/:ID',             'GET',    'ProductosApiController', 'get'            );
-    $router->addRoute('Productos/:ID/:subrecurso', 'GET',    'ProductosApiController', 'get'            );
     $router->addRoute('Productos/Orden/:ORDER',    'GET',    'ProductosApiController', 'ObtenerOrdenado');
     $router->addRoute('Productos',                 'POST',   'ProductosApiController', 'create'         );
     $router->addRoute('Productos/:ID',             'DELETE', 'ProductosApiController', 'eraseproductos' );
     $router->addRoute('Productos/:ID',             'PUT',    'ProductosApiController', 'modify'         );
+    $router->addRoute('Productos/:ID/:subrecurso', 'GET',    'ProductosApiController', 'get'            );
+    $router->addRoute('Categorias/:ID',            'GET',    'ProductosApiController', 'getbycat'       );
+    $router->addRoute('Categorias',                'GET',    'ProductosApiController', 'getbycat'       );
+
     
     $router ->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
 

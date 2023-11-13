@@ -11,7 +11,7 @@
         }
 
         function get($params = []){
-            if(empty($params)){
+            if(empty($params)){                   
                 $productos = $this->model->getAll();
                 $this -> view ->response($productos, 200);
             } else {
@@ -35,6 +35,7 @@
                             case 'Descripcion':
                                 $this->view->response($producto->Descripcion, 200);
                             break;
+                            
                             default:
                                 $this->view->response(
                                 'El producto no contiene '.$params[':subrecurso'].'.', 404);
@@ -43,11 +44,11 @@
                     } else {
                         $this -> view ->response($producto, 200);
                     }
-                } else {
+                }  else {
                     $this -> view ->response('el producto de id '.$id.' no existe.', 404);
-
                 }
-            }
+            } 
+           
         }
         function eraseproductos($params = []) {
             $id = $params[':ID'];
@@ -68,7 +69,7 @@
             $Descripcion= $body->Descripcion;
 
             $id = $this->model->insertar_datos($Producto,$Imagen,$Precio,$Categoria,$Descripcion);
-            $this -> view -> response('El producto de id '.$id.' ha sido registrado correctamente!',201);
+            $this -> view -> response('El producto de id '.$id.' ha sido registrado correctamente!', 201);
         }
 
         function modify($params= []) {
@@ -83,7 +84,7 @@
                 $Descripcion= $body->Descripcion;
                 $this->model->actualizar_datos($id, $Producto, $Imagen, $Precio, $Categoria, $Descripcion);
             
-                $this -> view -> response('El producto de id '. $id .' fue modificado correctamente!', 200);
+                $this -> view -> response('El producto de id '. $id .' fue modificado correctamente!', 201);
             } else {
                 $this -> view -> response('El producto '. $id .' no existe', 404);
             }
@@ -92,21 +93,36 @@
         function ObtenerOrdenado($params=[]){
             $orden =$params[':ORDER'];
             switch ($params[':ORDER']) {
-              case 'asc':
-                $productos=$this->model->ObtenerProductosOrdenados($orden);
-                $this->view->response($productos, 200);
-                  break;
-              case 'desc':
-                $productos=$this->model->ObtenerProductosOrdenados($orden);
-                $this->view->response($productos, 200);
-             
-                  break;
-              default:
-                  $this->view->response('Parametro no reconocido', 400);
-                  break;
-          }
-      
-          }
+                case 'asc':
+                    $productos=$this->model->ObtenerProductosOrdenados($orden);
+                    $this->view->response($productos, 200);
+                break;
+                case 'desc':
+                    $productos=$this->model->ObtenerProductosOrdenados($orden);
+                    $this->view->response($productos, 200);
+                break;
+
+                default:
+                    $this->view->response('Parametro no reconocido', 400);
+                break;
+            }
+        }
+
+        function getbycat($params= []){
+            if(empty($params)){
+                $this -> view ->response('No se aplicó un valor', 400);
+            } else {
+                if (isset($params[':ID'])){
+                    $id= $params[':ID'];
+                    $productos= $this->model->ObtenerProductosPorCategoria($id);
+                    if(($productos==false)){
+                        $this -> view ->response('El valor '. $id .' no contiene productos' , 404);
+                    } else {
+                        $this -> view ->response($productos, 200);
+                    }
+                }
+            }
+        }
     }
 
 
