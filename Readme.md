@@ -9,9 +9,11 @@ Breve descripción de la temática: -En resumen, la pagina es una version pareci
 ## ENDPOINTS usados:
 - GET: /api/Productos
 - GET: /api/Productos/ID (cualquier id de los productos)
-- GET: /api/Productos/ID/subrecurso (cualquier id y cualquiera de los datos de un producto) EJ: si se usase la secuencia id /api/Productos/26/Categoria, el programa mostraria la categoria Demon Slayer
+- GET: /api/Productos/ID/subrecurso (cualquier id y cualquiera de los datos de un producto) EJ: si se usase la secuencia /api/Productos/26/Categoria, el programa mostraria que la categoria del producto de id 26 es "Demon Slayer"
+- GET: /api/Categorias/ID (cualquier id de las categorias en la base de datos) EJ: si se usase la secuencia /api/Categorias/1, el programa filtraria todos los productos que fuesen de categoria "Naruto"
 - DELETE: /api/Productos/ID (cualquier id de los productos)
 - POST: /api/Productos (deberia de tener un codigo disponible para agregar a la base de datos)
+- PUT: /api/Productos/ID (cualquier id de un producto) Ej: si se usara la secuencia /api/Productos/26 y un formato de codigo similar al adjunto debajo, los datos del producto de id 26 se verian modificados
 - ORDENAR:  /api/Productos/Orden/:ORDEN (asc (ascendente) o desc (descendente) por precio)
 ## ejemplo de codigo que se puede usar para los POST o PUT:
 - {
